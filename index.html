@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Import Styles -->
+    <link rel="icon" type="image/png" href="./images/logo.png" />
+    <link rel="stylesheet" href="style.css">
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
+
+    <title>PokeDex</title>
+</head>
+
+<body>
+    <div id="app">
+        <nav>
+            <a href="index.html">PokeDex 💾</a>
+            <p id="burger">≡</p>
+            <div>
+                <form @submit.prevent="sortListById">
+                    <input type="text" class="search" placeholder="🔍 Search by id" v-model="searchById" />
+                </form>
+                <form @submit.prevent="sortListByName">
+                    <input title="Double enter please !" type="text" class="search" placeholder="🔍 Search by name" v-model="searchByName" />
+                </form>
+                <div class="paging">
+                    <p>🔽 Paging</p>
+                    <div class="paging-content">
+                        <p v-on:click="changeNumberByPage(10)">10 by page 😀</p>
+                        <p v-on:click="changeNumberByPage(20)">20 by page 😁</p>
+                        <p v-on:click="changeNumberByPage(40)">40 by page 😋</p>
+                        <p v-on:click="changeNumberByPage(100)">100 by page 🤪</p>
+                        <p v-on:click="changeNumberByPage(1200)">All in the same page 🤯</p>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        <aside id="prevAside" v-show="!isClicked">
+            <p v-on:click="remove5Page()" title="- 5 Pages">⏪</p>
+            <p v-on:click="removePage()" title="- 1 Page">◀️</p>
+        </aside>
+        <section>
+            <div class="details" v-show="isClicked">
+                <div class="pokeImage"><img :src="getImage(id)" alt="pokemon-image"></div>
+                <img class="cross" src="./images/cross.png" alt="cross" v-on:click="changeClicked()">
+                <p class="pokeName"> #{{ id }} {{ infos.name }} </p>
+                <ul class="pokeType">
+                    <li class="types" v-for="type in infos.types"> {{type.slot}}. {{ type.type.name }} </li>
+                </ul>
+                <div class="description">
+                    <p class="pokeWeight">• Weight ⚖️ : {{ infos.weight/10 }} kg</p>
+                    <p class="pokeHeight">• Height 📏 : {{ infos.height/10 }} m</p>
+                    <p class="pokeStats">• Stats 📶 :</p>
+                    <ul>
+                        <li v-for="stat in infos.stats"> - {{stat.stat.name}} : {{stat.base_stat}} </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <ul>
+                <li v-for="pokemon in pokemonDisplayed" v-on:click="getInfos(pokemon.url)" v-show="!isClicked"
+                    :key="getId(pokemon.url)">
+                    <img class="pokeImage" :src="getImage(getId(pokemon.url))" alt="pokemon-image">
+                    <p class="pokeName"> {{pokemon.name}} </p>
+                    <p class="pokeId"># {{ getId(pokemon.url) }}</p>
+                </li>
+            </ul>
+
+        </section>
+        <aside id="nextAside" v-show="!isClicked">
+            <p v-on:click="addPage()" title="+ 1 Page">▶️</p>
+            <p v-on:click="add5Page()" title="+ 5 Pages">⏩</p>
+        </aside>
+        <footer>
+            <p><a href="https://github.com/romainfrz" target="blank" style="text-decoration: none; color:black;">© Romain FREZIER - IG3</a></p>
+            <a href="https://www.polytech.umontpellier.fr" target="blank"><img id="logoPolytech"
+                    src="./images/logo-montpellier-couleur-haute-def.png" alt="logo-polytech"></a>
+        </footer>
+    </div>
+
+</body>
+
+<!-- Import App -->
+<script src="./main.js"></script>
+
+
+</html>

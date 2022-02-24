@@ -1,0 +1,496 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ----------------------------------------------------------------- */
+
+@font-face {
+	font-family: Pokemon;
+	src: url('./fonts/Pokemon\ Solid.ttf');
+}
+
+#app {
+	font-family: Arial, Helvetica, sans-serif;
+	height: 100vh;
+	width: 100vw;
+	display: grid;
+	grid-template-columns: 10% 80% 10%;
+	grid-template-rows: 20% 70% 10%;
+}
+@media only screen and (min-width: 1250px){
+	nav {
+	grid-column: 1 / 4;
+	grid-row: 1;
+    background-color: rgb(200, 0, 0);
+	width: 100%;
+    display: flex;
+	align-items: center;
+}
+
+#burger {
+	display: none;
+}
+
+nav > a {
+	font-family: Pokemon;
+	text-decoration: none;
+	color: black;
+	font-size: 60px;
+	margin-left: 40px;
+}
+
+nav > div > .paging, nav > div > .typesFilter, nav > div > form > input{
+	font-size: 35px;
+    margin: 10px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, 0.4);
+	transition: 0.2s;
+	position: relative;
+	color: black;
+}
+nav > div > form > input {
+	width: 300px;
+}
+
+.paging{
+	display: inline-block;
+	position: relative;
+}
+
+.paging-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  overflow: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+}
+.paging:hover .paging-content {
+  display: block;
+  margin-top: 12px;
+  background-color: rgb(200, 0, 0);
+  border-radius: 10px;
+}
+
+.paging-content p {
+  display: block;
+  padding: 5px;
+  font-size: 15px;
+}
+.paging-content p:hover {
+  color: white;
+  background-color: black;
+}
+
+.typesFilter{
+	display: inline-block;
+	position: relative;
+}
+
+.typesFilter-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  overflow: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+}
+.typesFilter:hover .typesFilter-content {
+  display: block;
+  margin-top: 12px;
+  background-color: rgb(200, 0, 0);
+  border-radius: 10px;
+}
+
+.typesFilter-content p {
+  display: block;
+  padding: 5px;
+  font-size: 15px;
+}
+.typesFilter-content p:hover {
+  color: white;
+  background-color: black;
+}
+
+
+nav > div {
+	display: flex;
+	position: absolute;
+	right: 10px;
+}
+
+nav > div > .search:hover, nav > div > .paging:hover{
+	cursor: pointer;
+	background-color: transparent;
+}
+
+}
+
+@media only screen and (max-width: 1250px){
+	nav {
+	grid-column: 1 / 4;
+	grid-row: 1;
+    background-color: rgb(200, 0, 0);
+	width: 100%;
+    display: flex;
+	align-items: center;
+}
+
+#burger {
+	width: 40%;
+	display: block;
+	font-size: 40px;
+	align-items: center;
+	text-align: right;
+	padding-right: 30px;
+}
+
+#burger:hover {
+	cursor: pointer;
+}
+
+nav > a {
+	width: 60%;
+	font-family: Pokemon;
+	text-decoration: none;
+	color: black;
+	font-size: 60px;
+	margin-left: 40px;
+}
+
+nav > div > .paging, nav > div > form > input{
+	font-size: 35px;
+    margin: 10px;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, 0.4);
+	transition: 0.2s;
+	position: relative;
+	color: black;
+}
+nav > div > form > input {
+	width: 300px;
+	display: none;
+}
+
+.paging{
+	display: inline-block;
+	position: relative;
+}
+
+.paging-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  overflow: auto;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+}
+.paging:hover .paging-content {
+  display: block;
+  margin-top: 12px;
+  background-color: rgb(200, 0, 0);
+  border-radius: 10px;
+}
+
+.paging-content p {
+  display: block;
+  padding: 5px;
+  font-size: 15px;
+}
+.paging-content p:hover {
+  color: white;
+  background-color: black;
+}
+
+nav > div {
+	display: none;
+	position: absolute;
+	right: 10px;
+}
+
+nav > div > .search:hover, nav > div > .paging:hover{
+	cursor: pointer;
+	background-color: transparent;
+}
+
+}
+
+
+#prevAside{
+	grid-column: 1;
+	grid-row: 2;
+}
+
+#nextAside{
+	grid-column: 3;
+	grid-row: 2;
+}
+
+#prevAside, #nextAside {
+	display: flex;
+	align-items: center;
+}
+
+#prevAside > p, #nextAside > p {
+	font-size: 40px;
+	width: 100%;
+	text-align: center;
+	transition: 0.2s;
+}
+
+#prevAside > p:hover, #nextAside > p:hover {
+	cursor: pointer;
+	font-size: 50px;
+}
+
+section {
+	grid-column: 2;
+	grid-row: 2;
+	border-left: 1px solid rgba(0, 0, 0, 0.2);
+	border-right: 1px solid rgba(0, 0, 0, 0.2);
+	overflow-x: hidden;
+	overflow-y: hidden;
+	text-align: center;
+}
+
+section > ul {
+	padding: 10px;
+	width: 100%;
+	height: 100%;
+	display: block;
+	margin: 0 auto;
+	overflow-y: scroll;
+}
+
+section > ul > li {	
+	display: inline-block;
+	width: 250px;
+	height: 250px;
+	margin: 10px;
+	border: solid 3px black;
+	border-radius: 10px;
+	align-items: center;
+	text-align: center;
+	transition: 0.5s;
+	background-image: url(./images/pokeball2.png);
+	background-position: center;
+	background-size: 170%;
+}
+
+section > ul > li:hover {
+	border: solid 3px rgb(200, 0, 0);
+	cursor: pointer;
+	background-image: url(./images/pokeball2_transition.png);
+}
+
+section > ul > li > .pokeImage {
+	max-width: 65%;
+	min-width: 60%;
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+}
+
+section > ul > li > .pokeName {
+	width: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	margin-top: 10px;
+	text-transform: capitalize;
+}
+
+section > ul > li > .pokeId {
+	width: 100%;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+section > div {
+	overflow-y: hidden;
+	height: 100%;	
+	background-image: url("./images/pokeball1.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	display: grid;
+	grid-template-columns: 50% 25% 25%;
+	grid-template-rows: 5% 15% 10% 70%;
+	vertical-align: middle;
+}
+
+section > div:hover{
+	cursor: default;
+}
+
+section > .details > .cross {
+	grid-column: 1 / 4;
+	grid-row: 1;
+	max-height: 10%;
+	display: flex;
+	position: absolute;
+	right: 10px;
+}
+
+section > .details > .cross {
+	cursor: pointer;
+}
+
+section > .details > .pokeImage {
+	grid-column: 1;
+	grid-row: 1 / 5;
+	display: flex;
+	align-items: center;
+	border-right: 4px solid black;
+}
+section > .details > .pokeImage > img {
+	
+	margin: 0 auto;
+	max-width: 400px;
+	max-height: 400px;
+}
+section > .details > .pokeName {
+	grid-row: 2;
+	grid-column: 2 / 4;
+	width: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 50px;
+	text-transform: capitalize;
+}
+
+section > .details > .pokeId {
+	grid-row: 3;
+	grid-column: 2;
+	width: 100%;
+	height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 50px;
+	text-transform: capitalize;
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+}
+
+section > .details > .pokeType {
+	grid-row: 3;
+	grid-column: 2/4;
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	text-transform: capitalize;
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+	align-items: center;
+}
+
+section > .details > .pokeType > li.types {
+	border: 2px black solid;
+	border-radius: 20px;
+	padding: 10px;
+	margin: 0 auto;
+}
+
+section > .details > .description {
+	grid-row: 4;
+	grid-column: 2 / 4;
+	padding: 10px;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 40px;
+}
+
+section > .details > .description > p {
+	margin: 10px;
+}
+
+section > .details > .description > ul {
+	font-size: 30px;
+	margin: 5px;
+	margin-left: 70px;
+	text-transform: capitalize;
+}
+
+li > .typeTitle {
+	margin: 0 auto;
+}
+
+footer {
+	grid-column: 1 / 4;
+	grid-row: 3;
+	
+	width: 100%;
+	background-color: rgb(200, 0, 0);
+	display: flex;
+	align-items: center;
+	
+	font-size: 20px;
+}
+
+footer > p {
+	display: inline-block;
+	margin: 0 auto;
+	margin-right: 80px;
+}
+
+footer > p:hover {
+	cursor: default;
+}
+
+footer > a {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	margin: 0 auto;
+}
+
+#logoPolytech {
+	max-height: 70%;
+}
